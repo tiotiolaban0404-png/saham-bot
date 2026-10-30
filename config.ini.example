@@ -1,0 +1,44 @@
+# ---------------------------------------------------------------------------
+# config.ini - konfigurasi aplikasi (Stock Bot + Email Pipeline)
+# Salin ke config.ini dan isi sesuai akun kamu.
+# ---------------------------------------------------------------------------
+# Kamu juga bisa pakai env variabel, contoh:
+#   TELEGRAM_TOKEN=xxx TELEGRAM_CHAT_ID=123
+#   EMAIL_SMTP_HOST=smtp.gmail.com EMAAIL_SMTP_PORT=587
+#   EMAIL_SMTP_USER=a@gmail.com EMAIL_SMTP_PASS=xxxxx
+#   EMAIL_FROM=a@gmail.com EMAIL_TO=b@gmail.com
+
+[saham]
+; Path daftar emiten (default: watchlist_saham.txt di folder ini)
+watchlist=watchlist_saham.txt
+
+[telegram]
+; Bot token dari @BotFather
+token=
+; Chat ID (sah setelah 2 arah obrolan dengan bot)
+chat_id=
+
+[smtp]
+; Gmail: smtp.gmail.com (port 587) / Gmail App Password
+host=smtp.gmail.com
+port=587
+user=
+pass=
+use_tls=true
+
+[report]
+; Dari & ke email untuk laporan
+;subject=Laporan Saham {date}
+;email_from=
+;email_to=
+
+[imap]
+; Gmail: imap.gmail.com (port 993)
+host=imap.gmail.com
+port=993
+user=
+pass=
+folder=INBOX
+days=1
+; batasi hanya email dari alamat ini (opsional)
+;match_from=

@@ -1,0 +1,33 @@
+# Daftar emiten yang dipantau (satu kode per baris, # = komentar).
+
+# ============ INDONESIA / IHSG ============
+BBCA.JK
+BBRI.JK
+BMRI.JK
+BBNI.JK
+TLKM.JK
+ASII.JK
+UNTR.JK
+GOTO.JK
+BUMI.JK
+BRPT.JK
+AMMN.JK
+KRAS.JK
+MDKA.JK
+ADRO.JK
+BRIS.JK
+INET.JK
+
+# ============ AS / Wall Street ============
+AAPL
+MSFT
+NVDA
+AMD
+INTC
+MCHP
+TXN
+META
+TSLA
+GOOGL
+AMZN
+IBM

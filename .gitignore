@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+-build/
+venv/
+.env
+
+# Output & data kerja (bukan source)
+*.eml
+laporan_*.eml
+laporan_lamaran_*.eml
+logs/
+.ipynb_checkpoints/
+
+# Binary & dokumen rakitan
+*.deb
+*.jpg
+*.pdf
+*.db
+
+# Local config (token, password, chat id)
+config.ini
