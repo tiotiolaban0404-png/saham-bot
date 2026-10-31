@@ -6,6 +6,7 @@ Jalankan:
 """
 
 import os
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -74,6 +75,34 @@ class TestTelegram(unittest.TestCase):
         )
         self.assertTrue(ok)
         self.assertIn("DRY-RUN", msg)
+
+
+class TestDatabaseCLI(unittest.TestCase):
+    def setUp(self):
+        self.repo = Path(__file__).resolve().parent.parent
+        self.old_db = os.environ.get("SAHAM_DB")
+
+    def tearDown(self):
+        if self.old_db is None:
+            os.environ.pop("SAHAM_DB", None)
+        else:
+            os.environ["SAHAM_DB"] = self.old_db
+        if os.path.exists(self.repo / "alerts.db"):
+            os.remove(self.repo / "alerts.db")
+
+    def test_db_cli_register_and_list(self):
+        env = dict(os.environ, SAHAM_DB=str(self.repo / "alerts.db"))
+        proc = subprocess.run(
+            [sys.executable, "saham_bot/db.py", "register", "7401634640", "Ridho"],
+            cwd=self.repo, env=env, capture_output=True, text=True, timeout=30,
+        )
+        self.assertIn("✅ user terdaftar", proc.stdout)
+        proc = subprocess.run(
+            [sys.executable, "saham_bot/db.py", "list-users"],
+            cwd=self.repo, env=env, capture_output=True, text=True, timeout=30,
+        )
+        self.assertIn("7401634640", proc.stdout)
+        self.assertIn("Ridho", proc.stdout)
 
 
 if __name__ == "__main__":

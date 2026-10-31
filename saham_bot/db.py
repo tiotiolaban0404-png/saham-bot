@@ -188,9 +188,15 @@ def main():
     sub = p.add_subparsers(dest="cmd", required=True)
 
     sub.add_parser("init")
-    sub.add_parser("register").add_argument("chat_id").add_argument("username", nargs="?", default=None)
-    sub.add_parser("subscribe").add_argument("chat_id").add_argument("plan").add_argument("days", type=int, default=30)
-    sub.add_parser("cancel").add_argument("chat_id")
+    p_register = sub.add_parser("register")
+    p_register.add_argument("chat_id")
+    p_register.add_argument("username", nargs="?", default=None)
+    p_subscribe = sub.add_parser("subscribe")
+    p_subscribe.add_argument("chat_id")
+    p_subscribe.add_argument("plan")
+    p_subscribe.add_argument("days", type=int, default=30)
+    p_cancel = sub.add_parser("cancel")
+    p_cancel.add_argument("chat_id")
     sub.add_parser("list-users")
     sub.add_parser("renew")
 
